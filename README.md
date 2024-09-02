@@ -21,3 +21,7 @@ curl -X POST http://localhost:3000/ -H "Content-Type: application/json" -d '{"":
 ## create transaction
 
 curl -X POST http://localhost:3000/ -H "Content-Type: application/json" -d '{"":"", "":"", "":""}'
+
+## create migration
+
+npx prisma migrate dev --name <identifier_of_migration>
