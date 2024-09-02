@@ -14,13 +14,15 @@ datasource db {
 }
 
 model User {
-    id           Int           @id @default(autoincrement())
-    email        String        @unique
+    id           Int                  @id @default(autoincrement())
+    email        String               @unique
     firstname    String
     lastname     String
+    password     String               @default("null")
     transactions Transaction[]
-    createdAt    DateTime      @default(now())
-    updatedAt    DateTime      @updatedAt
+    authPin      Authentication_Pin[]
+    createdAt    DateTime             @default(now())
+    updatedAt    DateTime             @updatedAt
 }
 
 model Transaction {
@@ -64,4 +66,13 @@ model Description {
     category   Category @relation(fields: [categoryId], references: [id])
     createdAt  DateTime @default(now())
     updatedAt  DateTime @updatedAt
+}
+
+model Authentication_Pin {
+    id        Int      @id @default(autoincrement())
+    userId    Int
+    user      User     @relation(fields: [userId], references: [id])
+    pin       String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 }

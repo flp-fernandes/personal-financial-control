@@ -1,3 +1,7 @@
+## health check
+
+curl -X GET http://localhost:3000/health-check/database
+
 ## create user
 
 curl -X POST http://localhost:3000/user -H "Content-Type: application/json" -d '{"email":"felipe.soares.fernandes@gmail.com", "firstname":"Felipe", "lastname":"Fernandes"}'
